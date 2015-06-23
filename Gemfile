@@ -9,5 +9,5 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec'
   gem 'rspec-sinatra'
-  gem 'shotgun'  
+  gem 'shotgun'
 end
