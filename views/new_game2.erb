@@ -1,0 +1,23 @@
+
+
+<% if $game %>
+  <p> Another user wants to play!
+  <p>Click the button below to go into the game.</p>
+  <form>
+    <button type = "submit" formaction="/join_game"> Start game </button>
+  </form>
+
+<%else%>
+  
+
+  <p> Do you want to start a new game? </p>
+  <p>Click the button below to start the game.</p>
+  <form>
+    <button type = "submit" formaction="/new_game"> Start game </button>
+  </form>
+<%end%>
+
+
+
+
+

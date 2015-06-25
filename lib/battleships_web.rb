@@ -4,8 +4,8 @@ require 'battleships'
 class BattleshipsWeb < Sinatra::Base
   get '/' do
     erb :index
-
   end
+
   post '/newgame' do
     $game = Game.new Player, Board
     session[:name] = params[:name]
@@ -46,3 +46,24 @@ class BattleshipsWeb < Sinatra::Base
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
+
+--------------------------
+       2 USERS GAME
+--------------------------
+
+get '/' do
+    erb :index2
+end
+
+get '/new_game' do
+  $game = Game.new Player, Board
+  
+  session[:player_1] = params[:name] 
+  erb :newgame2
+end
+
+get '/join_game' do
+end
+   
+
+
