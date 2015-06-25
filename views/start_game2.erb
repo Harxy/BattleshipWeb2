@@ -1,0 +1,34 @@
+<% if session[:player] = player_1 %>
+
+  <pre class="board"><%=@board_1%></pre>
+  <pre class="board"><%=@opponent_board_1%></pre>
+
+<% else %>
+  <pre class="board"><%=@board_2%></pre>
+  <pre class="board"><%=@opponent_board_2%></pre>
+
+<%end%>
+
+  <p>Please enter the ship, the coordinate to place your ship:</p>
+
+  <form action="/place" method='post'>
+
+    <select name="ship_type" value='Ship type'>
+      <option value="battleship">Battleship</option>
+      <option value="submarine">Submarine</option>
+      <option value="destroyer">Destroyer</option>
+      <option value="cruiser">Cruiser</option>
+      <option value="aircraft_carrier">Aircraft Carrier</option>
+    </select>
+      <input type="text" name="coords" placeholder='coordinates'>
+      <input id='vertical' type="radio" name="direction" value="vertically">Vertical</input>
+      <input id='horizontal' type="radio" name="direction" value="horizontally">Horizontal</input>
+    </br></br>
+      <input type="submit" value="Place ship">
+
+  </form>
+
+  <form action="/start_attacking" method="post"> <input type="submit" value="Start attacking!">
+  </form>
+
+

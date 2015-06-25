@@ -55,14 +55,30 @@ get '/' do
     erb :index2
 end
 
-get '/new_game' do
-  $game = Game.new Player, Board
+post '/registration' do
   
-  session[:player_1] = params[:name] 
+  session[:player] = player_1
+  session[:name  ] = params[:name] 
+
   erb :newgame2
 end
 
+get '/start_new_game' do
+  $game = Game.new Player, Board
+
+  @board_1          = $game.own_board_view( $game.player_1)
+  @opponent_board_1 = $game.opponent_board_view $game.player_1
+
+  erb :start_game2
+end
+
 get '/join_game' do
+  session[:player]  = player_2
+  session[:name]    = params[:name]
+  @board_2          = $game.own_board_view( $game.player_2 )
+  @opponent_board_2 = $game.opponent_board_view $game.player_2
+  
+  erb :start_game2
 end
    
 
