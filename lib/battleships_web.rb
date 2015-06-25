@@ -1,9 +1,8 @@
 require 'sinatra/base'
 require 'battleships'
-require 'pp'
+
 class BattleshipsWeb < Sinatra::Base
   get '/' do
-    # 'Hello BattleshipsWeb!'
     erb :index
 
   end
@@ -24,6 +23,18 @@ class BattleshipsWeb < Sinatra::Base
   $game.player_1.place_ship(Ship.battleship, @coords, @direction)
   erb :place
   end
+
+  post '/start_attacking' do
+
+    erb :start_attacking
+  end
+
+  post '/attack' do
+    @coords = params[:coords]
+    @result = $game.player_2.shoot(@coords.to_sym)
+    erb :attack
+  end
+
   set :views, proc {File.join(root, '..', 'views')}
 
   # start the server if ruby file executed directly
