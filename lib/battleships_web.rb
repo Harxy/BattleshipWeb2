@@ -8,20 +8,26 @@ class BattleshipsWeb < Sinatra::Base
   end
   post '/newgame' do
     $game = Game.new Player, Board
-    @name = params[:name]
+    session[:name] = params[:name]
+
     erb :newgame
   end
 
   get '/startgame' do
+    @board = $game.own_board_view $game.player_1
     erb :startgame
+  end
 
+  get '/place' do
+    erb :startgame
   end
 
   post '/place' do
-  @coords = params[:coords]
-  @direction = params[:direction]
-  $game.player_1.place_ship(Ship.battleship, @coords, @direction)
-  erb :place
+    $game.player_1.place_ship(Ship.send( params[:ship_type]), 
+                                         params[:coords], 
+                                         params[:direction])
+
+    redirect '/place'
   end
 
   post '/start_attacking' do
@@ -30,8 +36,7 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   post '/attack' do
-    @coords = params[:coords]
-    @result = $game.player_2.shoot(@coords.to_sym)
+    @result = $game.player_2.shoot(params[:coords].to_sym)
     erb :attack
   end
 

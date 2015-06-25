@@ -1,12 +1,17 @@
-<pre><%= $game.own_board_view $game.player_1%></pre>
+<pre><%=@board%></pre>
 
-<p>Please enter a coordinate to place your ship:</p>
+<p>Please enter the ship, the coordinate to place your ship:</p>
 
-<form action="/place" method='post'> <input type="text" name="coords">
+<form action="/place" method='post'> 
+  <input type="text" name="ship_type" value='Ship type'>
+  <input type="text" name="coords" value='coordinates'>
   <input type="radio" name="direction" value="vertically"> Vertical </input>
   <input type="radio" name="direction" value="horizontally"> Horizontal </input>
 </br>
 <input type="submit" value="Place ship">
 </form>
+
+
 <form action="/start_attacking" method="post"> <input type="submit" value="Start attacking!">
 </form>
+
