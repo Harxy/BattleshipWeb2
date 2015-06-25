@@ -1,4 +1,4 @@
-<% if session[:player] = player_1 %>
+ç
 
   <pre class="board"><%=@board_1%></pre>
   <pre class="board"><%=@opponent_board_1%></pre>
@@ -27,8 +27,11 @@
       <input type="submit" value="Place ship">
 
   </form>
+  <% if session[:player] = :player_1 %>
+    <form action="/start_attacking_player_1" method="post"> <input type="submit" value="Start attacking!">
+    </form>
+  <% else %>
+    <form action="/start_attacking_player_2" method="post"> <input type="submit" value="Start attacking!">
+    </form>
 
-  <form action="/start_attacking" method="post"> <input type="submit" value="Start attacking!">
-  </form>
-
-
+  <% end %>
