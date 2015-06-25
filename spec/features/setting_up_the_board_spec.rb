@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-feature "setting up a board" do
-  scenario "place 5 ships onto the board" do
-
-    visit '/place'
-    
-
+feature "setting up the game environment" do
+  scenario "board exist when new game starts" do
+    visit '/'
+    fill_in('name', with: 'mohamed')
+    click_button 'New Game'
+    click_button 'Start game'
+    expect(page).to have_selector('.board')
+    expect(page).to have_content('Please')
   end
-
 end

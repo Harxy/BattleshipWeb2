@@ -1,17 +1,23 @@
-<pre><%=@board%></pre>
+<pre class="board"><%=@board%></pre>
 
 <p>Please enter the ship, the coordinate to place your ship:</p>
 
-<form action="/place" method='post'> 
-  <input type="text" name="ship_type" value='Ship type'>
-  <input type="text" name="coords" value='coordinates'>
-  <input type="radio" name="direction" value="vertically"> Vertical </input>
-  <input type="radio" name="direction" value="horizontally"> Horizontal </input>
-</br>
-<input type="submit" value="Place ship">
-</form>
+<form action="/place" method='post'>
 
+  <select name="ship_type" value='Ship type'>
+    <option value="battleship">Battleship</option>
+    <option value="submarine">Submarine</option>
+    <option value="destroyer">Destroyer</option>
+    <option value="cruiser">Cruiser</option>
+    <option value="aircraft_carrier">Aircraft Carrier</option>
+  </select>
+    <input type="text" name="coords" placeholder='coordinates'>
+    <input type="radio" name="direction" value="vertically"> Vertical </input>
+    <input type="radio" name="direction" value="horizontally"> Horizontal </input>
+  </br></br>
+    <input type="submit" value="Place ship">
+
+</form>
 
 <form action="/start_attacking" method="post"> <input type="submit" value="Start attacking!">
 </form>
-

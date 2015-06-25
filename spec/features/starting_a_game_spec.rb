@@ -8,8 +8,10 @@ feature 'Starting a new game' do
     expect(page).to have_content "Hello, mohamed"
   end
   scenario 'Ask the user to click a button to start the game and place a ship' do
-    visit '/newgame'
+    visit '/'
+    fill_in('name', with: 'mohamed')
+    click_button 'New Game'
     click_button 'Start game'
-    expect(page).to have_content "Please enter a coordinate to place your ship:"
+    expect(page).to have_content "Please enter the ship, the coordinate to place your ship:"
   end
 end

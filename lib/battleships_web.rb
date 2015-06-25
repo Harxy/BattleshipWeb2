@@ -19,12 +19,13 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/place' do
+    @board = $game.own_board_view $game.player_1
     erb :startgame
   end
 
   post '/place' do
-    $game.player_1.place_ship(Ship.send( params[:ship_type]), 
-                                         params[:coords], 
+    $game.player_1.place_ship(Ship.send( params[:ship_type]),
+                                         params[:coords],
                                          params[:direction])
 
     redirect '/place'
